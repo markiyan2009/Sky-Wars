@@ -1,0 +1,20 @@
+while menu: 
+    main_win.blit(fontMenu,(100,100))
+    if not finish:
+        buttonPlay.draw()
+        buttonExit.draw()
+        enemies.clear(main_win,background)
+        player.kill()
+        player.bullets.clear(main_win,background)
+        display.update()
+        
+    for e in event.get():
+        if e.type == QUIT:
+            menu = False
+        if e.type == MOUSEBUTTONDOWN:
+            x,y = mouse.get_pos()
+            if buttonPlay.collidepoint(x,y):
+                start_game()
+            if buttonExit.collidepoint(x,y):
+                menu = False
+    main_win.blit(background,(0,0))
